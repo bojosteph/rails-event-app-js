@@ -36,6 +36,6 @@ user5.rsvp_events.create(attending_event_id: event2.id)
 user6.rsvp_events.create(attending_event_id: event3.id)
 
 
-event2.reviews.create(reviewer_id: user6.id, rating: 7, body: "good event")
+
 
 

@@ -7,6 +7,10 @@ class ReviewsController < ApplicationController
     @user = current_user
     @event = Event.find_by(id: params[:event_id])
     @reviews = Review.where(reviewing_event_id: @event.id)
+    respond_to do |format|
+      format.html { render 'reviews/index', :layout => false }
+      format.json { render json:  @reviews, :layout => false}
+    end
   end
 
   def new
@@ -20,11 +24,15 @@ class ReviewsController < ApplicationController
     # raise params.inspect
     @user = current_user
     @event = Event.find_by(id: params[:event_id])
-    @review = @event.reviews.build(review_params)
+    @review = @event.reviews.create(review_params)
     @review.reviewer = @user
 
     if @review.save
-      redirect_to event_path(user_id: @user.id, id: @event.id)
+      # redirect_to event_path(user_id: @user.id, id: @event.id)
+      respond_to do |format|
+        format.html {redirect_to @event}
+        format.json {render :json => @review}
+      end
     else
       flash[:error] = 'YOU ALREADY REVIEWED THIS EVENT OR YOU NEED TO WRITE A REVIEW.'
       redirect_to event_path(user_id: @user.id, id: @event.id)
@@ -44,7 +52,7 @@ class ReviewsController < ApplicationController
       @event = Event.find(params[:id])
       review = Review.find_by(reviewer_id: @user.id, reviewing_event_id: @event.id)
       if review.nil?
-        redirect_to events_path(@event), alert: 'YOU CAN ONLY CANCEL YOUR REVIEW '
+        redirect_to event_path(@event), alert: 'YOU NEED TO WRITE A REVIEW'
       else
         review.reviewer == @user
         review.destroy

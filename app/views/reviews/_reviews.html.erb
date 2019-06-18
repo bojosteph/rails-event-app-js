@@ -1,0 +1,8 @@
+<p>Reviews: </p>
+<ol>
+  <%if @event.reviews.size > 0 %>
+  <li>
+    <%= @event.reviewers.first.username %> says: <em><%= @event.reviews.first.body %></em>
+  </li>
+  <% end %>
+</ol>

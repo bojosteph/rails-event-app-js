@@ -2,7 +2,6 @@
 <html lang="en">
 
   <head>
-
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -14,8 +13,9 @@
       integrity="sha384-C++cugH8+Uf86JbNOnQoBweHHAe/wVKN/mb0lTybu/NZ9sEYbd+BbbYtNpWYAsNP" crossorigin="anonymous">
     <title>RailsEventApp</title>
     <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application'%>
   </head>
 
   <body>
@@ -32,13 +32,13 @@
 
           <li class="nav-item active">
             <% @user = current_user %>
-            <a class="nav-link" href="<%= events_path(@user) %>">UPCOMING EVENTS</a>
+            <a class="nav-link" href="<%= events_path %>">UPCOMING EVENTS</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/users/<%= @user.id %>">YOUR EVENTS</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<%= new_event_path(@user)%>">CREATE EVENTS</a>
+            <a class="nav-link" href="<%= new_event_path%>">CREATE EVENTS</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/signout">LOG OUT</a>
@@ -70,21 +70,22 @@
     <%= yield %>
 
 
+
+    <button id='events-data'>Get events</button>
+    <div id='ajax-events'>[events...]</div>
+    <br>
+    <br>
+
+    <button id='ajax-new-events'>New Events</button>
+    <div id="new-events-form-div">[form]</div>
+
+
+
     <nav class="navbar fixed-bottom navbar-light bg-light">
       <a class="navbar-brand" href="#">&copy; 2019<logo> RailsEventApp</logo></a>
     </nav>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
-    </script>
+    
   </body>
 
 </html>

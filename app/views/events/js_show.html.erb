@@ -1,0 +1,48 @@
+
+<div class="container">
+  <h2 style=" padding-top: 12px; color:#483D8B; padding-bottom: 12px;"></h2>
+  <h3 class="eventName">EVENT NAME:
+    <%= @event.name.upcase%>
+  </h3>
+  <br />
+  
+  <h4 class="eventStart">START OF EVENT:
+    <%= start_of_event(@event) %>
+  </h4>
+  <h4 class="eventEnd">END OF EVENT:
+    <%= end_of_event(@event) %>
+  </h4>
+  <h4 class="eventLocation">EVENT LOCATION:
+    <%= @event.location.upcase%>
+  </h4>
+  <br />
+
+  <h5 class="eventDescription" style="color: #000033">EVENT DETAILS:
+    <%= @event.description.upcase%>
+  </h5>
+
+  
+
+  
+
+
+  <div id="reviews">
+    <%= render 'reviews/reviews'%>
+  </div>
+
+  <%= link_to 'Load all reviews', event_reviews_path(@event), :id => "loadReviews" %>
+
+  <%= render 'reviews/form' %>
+  <% unless @review.nil? %>
+  
+    <a class="btn btn-outline-warning btn-lg btn-block" href="<%= delete_review_path(id: @event.id) %>">DELETE
+    REVIEW</a>
+  <% end %>
+  
+
+
+  
+
+  
+
+
