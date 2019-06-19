@@ -21,6 +21,14 @@
     <%= @event.description.upcase%>
   </h5>
 
+  <br>
+
+
+  <div id="reviewResult">
+    <p id="reviewRating"></p>
+    <p id="reviewBody"></p>
+  </div>
+
   
 
   
@@ -30,19 +38,36 @@
     <%= render 'reviews/reviews'%>
   </div>
 
-  <%= link_to 'Load all reviews', event_reviews_path(@event), :id => "loadReviews" %>
+  
+   <%= render 'reviews/form' %>
+  
 
-  <%= render 'reviews/form' %>
+
+  
   <% unless @review.nil? %>
   
     <a class="btn btn-outline-warning btn-lg btn-block" href="<%= delete_review_path(id: @event.id) %>">DELETE
     REVIEW</a>
   <% end %>
+   <br>
+
+   <button id='events-data'>Get events</button>
+   <div id='ajax-events'>[events...]</div>
+   <br>
+   <br>
+
+   <button id='review-data'>Get reviews</button>
+   <div id='ajax-review'>[reviews...]</div>
+   <br>
+   <br>
+
+
+   <button id='ajax-new-review'>New Events</button>
+   <div id="new-reviews-form-div">[form]</div>
+
+
+
   
 
-
   
-
-  
-
 

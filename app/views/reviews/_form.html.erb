@@ -5,7 +5,7 @@
 <%= form_for([@event, @review]) do |f|%>
 <%= f.hidden_field :reviewer_id %>
 
-<div class="form-group">
+<div class="form-group" >
   <%= f.label :rating %>
   <%= f.select :rating, options_for_select(0..10), class: 'form-control' %>
 </div>
@@ -15,6 +15,6 @@
 </div>
 
 
-<%= f.submit %>
+<%= f.submit 'Submit', id: "sub" %>
 <% end %>
 

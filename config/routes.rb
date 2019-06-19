@@ -30,7 +30,9 @@ Rails.application.routes.draw do
   resources :events do
     resources :reviews
   end
-    
+  
+  post '/reviews' => 'reviews#create'
+  get '/reviews' => 'reviews#index'
 
   resources :events do
      post '/rsvp_events/create', to: 'rsvp_events#create', on: :member

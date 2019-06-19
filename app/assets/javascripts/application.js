@@ -16,4 +16,10 @@
 //= require activestorage
 //= require_tree .
 
+// $(document).on(function(){
+//   $('#new_review').on('change', function(event){
+//     console.log(event);
+//     alert("Selected!");
+//   });
+// })
 

@@ -1,8 +1,10 @@
+
+
 <p>Reviews: </p>
 <ol>
-  <%if @event.reviews.size > 0 %>
+  <%@reviews.each do |review| %>
   <li>
-    <%= @event.reviewers.first.username %> says: <em><%= @event.reviews.first.body %></em>
+    <%= review.reviewer.full_name %>  gives a rating of <%= review.rating %>says: <em><%= review.body %></em>
   </li>
   <% end %>
 </ol>

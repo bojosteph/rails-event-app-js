@@ -133,10 +133,5 @@ class EventsController < ApplicationController
     Time.zone = 'Eastern Time (US & Canada)'
   end
 
-  def respond(event, view)
-    respond_to do |format|
-      format.html { render :view }
-      format.json { render json: event, status: 200}
-    end
-  end
+  
 end
